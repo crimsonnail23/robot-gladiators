@@ -1,3 +1,9 @@
+//game states
+//WIN - defeat all robots
+//          *fight all enemy robots
+//          *defeat each enemy robots
+//lose - players loses all health
+//
 //player values
 
 var playerName = window.prompt("what is your robot's name?");
@@ -12,13 +18,13 @@ var playerMoney = 10;
 
 console.log(playerName, playerAttack, playerHealth);
 
-var enemyName = "roborto"
+var enemyNames = ["roborto", "amy android", "robo trumble"];
 
 var enemyHealth = 50;
 
 var enemyAttack = 12;
 
-var fight = function() {
+var fight = function(enemyName) {
 
     //alert the players they are starting the round
 
@@ -121,7 +127,15 @@ var fight = function() {
 
 
 
-fight();
+for(var i=0; i < enemyNames.length; i++){
+
+    fight(enemyNames[i]);
+
+
+
+}
+
+
 
 
 
