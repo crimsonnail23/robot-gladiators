@@ -140,7 +140,17 @@ var fight = function(enemyName) {
 
 
 
-;
+//function to start a new game.
+
+var startGame = function(){
+
+    //reset player stats
+
+    playerHealth=100;
+
+    playerAttack=10;
+
+    playerMoney=10;
 
 
 
@@ -150,11 +160,11 @@ for(var i=0; i < enemyNames.length; i++){
 
         window.alert("welcome to robot gladiators! Round " + (i+1))
 
-        var pickedEnemyNames=enemyNames[i];
+        var pickedEnemyName=enemyNames[i];
 
         enemyHealth=50;
 
-        fight(pickedEnemyNames);
+        fight(pickedEnemyName);
     }
 
     else {
@@ -166,6 +176,49 @@ for(var i=0; i < enemyNames.length; i++){
 
 
 }
+
+// after the loop ends, player is either out of health or enemies to fight, so run the endGame function
+
+endGame();
+
+};
+
+// to eng the game.
+
+var endGame = function()  {
+
+    if(playerHealth>0){
+
+    window.alert("Great job! you have survived the game! you now have a score of " + playerMoney +".");
+    }
+
+    else {
+
+        window.alert("you havve lost");
+
+    }
+
+    var playAgainConfirm = window.confirm("would you like to play again?");
+
+    if (playAgainConfirm) {
+        // restart the game
+
+        startGame();
+
+    }
+
+    else {
+
+        window.alert("thank you for playing the game!");
+
+    }
+
+}
+
+
+//start the game when the page loads.
+
+startGame();
 
 
 
