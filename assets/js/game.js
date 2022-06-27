@@ -137,6 +137,8 @@ for(var i=0; i < enemyInfo.length; i++){
 
         window.alert("welcome to robot gladiators! Round " + (i+1))
 
+        
+
         var pickedEnemyObj=enemyInfo[i];
 
         pickedEnemyObj.health=randomNumber(40,60);
@@ -261,9 +263,25 @@ var randomNumber = function(min, max) {
 
 };
 
+var getPlayerName = function() {
+
+    var name = "";
+
+    while(name ==="" || name === null ) {
+
+        name = prompt("what is your robot's name?")
+
+    };
+
+    console.log("your robot's name is ");
+
+    return name;
+
+};
+
 var playerInfo = {
 
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
 
     health: 100,
 
