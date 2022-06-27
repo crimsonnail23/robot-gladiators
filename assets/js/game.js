@@ -196,17 +196,36 @@ endGame();
 
 var endGame = function()  {
 
-    if(playerInfo.health>0){
+    window.alert("The game has now ended, let's see  how you did");
+    //check localStorage for highschore, if none than use 0
 
-    window.alert("Great job! you have survived the game! you now have a score of " + playerInfo.money +".");
+    var highScore = localStorage.getItem("highscore");
+
+    if(highScore= null) {
+
+        highScore=0;
+
+    }
+
+    //if player has more money than highscore, then they have the new highscore.
+
+    if(playerInfo.money > highScore) {
+
+        localStorage.setItem("highscore", playerInfo.money);
+
+        localStorage.setItem("name", playerInfo.name);
+
+        alert(playerInfo.name + " now has the highscore of " + playerInfo.money);
     }
 
     else {
 
-        window.alert("you havve lost");
+        alert(playerInfo.name + " did not beat the highscore of " + highScore + ". Maybe next time.")
 
     }
+    
 
+    //ask the player if they want to play again.
     var playAgainConfirm = window.confirm("would you like to play again?");
 
     if (playAgainConfirm) {
