@@ -11,6 +11,55 @@
 
 
 
+var fightOrSkip = function(){
+
+      // ask player if they'd like to fight or skip using fightOrSkip function
+  
+      var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+
+      //conditional recursive function call
+
+      if(promptFight ==="" || promptFight === null) {
+
+        window.alert("You need to provide a valid answer please try again");
+
+        return fightOrSkip();
+      }
+
+      promptFight= promptFight.toLowerCase();
+
+
+
+        // if player picks "skip" confirm and then stop the loop
+  
+        if (promptFight === "skip" || promptFight === "SKIP") {
+    
+            // confirm player wants to skip
+   
+            var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+
+    
+            // if yes (true), leave fight
+    
+            if (confirmSkip) {
+      
+                window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
+      
+                // subtract money from playerMoney for skipping
+      
+                playerInfo.playerMoney = playerInfo.money - 10;
+
+                //return true if player wants to leave
+
+                return true;
+     
+                shop();
+            }
+
+        }
+
+ return false;
+}
 
 
 
@@ -20,31 +69,13 @@ var fight = function(enemy) {
 
     // ask players if they want to skip or go
     
-    var promptFight = window.prompt("Would you like to fight or skip this battle? enter FIGHT or SKIP to choose");
+        if(fightOrSkip()){
 
-    if (promptFight === "skip" || promptFight === "SKIP") {
-    
-        //confirm player wants to skip the fight
-    
-        var confirmSkip = window.confirm("are you sure you want to quit?")
-    
-        // if yes (true) leave fight
-    
-        if (confirmSkip) {
-    
-        window.alert(playerInfo.name + " has chosen to skip the fight!");
-    
-        //subtract money from player money
-        
-        playerInfo.money = Math.max(0,playerInfo.money - 10);
-    
-        console.log("playerInfo.money ", playerInfo.money);
-    
-        break;
-    
+            //if true leave fight by breaking lop
+
+            break;
+
         }
-
-    }
 
    
 //creates a random value for the damage.
@@ -174,7 +205,7 @@ endGame();
 
 };
 
-// to eng the game.
+// to end the game.
 
 var endGame = function()  {
 
